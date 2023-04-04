@@ -6,13 +6,13 @@ public class EmployeeBook {
     public void printingDataOfOneEmployee(int i) {
         if (Employee[i] != null) {
             System.out.println((Employee[i].getLastName() + Employee[i].getFirstName()
-            + Employee[i].getPatronymic() + Employee[i].getDepartment()
-            + Employee[i].getSalary() + Employee[i].getId()));
+                    + Employee[i].getPatronymic() + Employee[i].getDepartment()
+                    + Employee[i].getSalary() + Employee[i].getId()));
         }
 
     }
 
-    public  Employee createNewEmployee() {
+    public Employee createNewEmployee() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите фамилию");
         String newLastName = scanner.nextLine();
@@ -34,22 +34,22 @@ public class EmployeeBook {
             printingDataOfOneEmployee(i);
         }
     }
+
     public void addNewEmployee(Employee newEmployee) {
         int i = 0;
         while (true) {
-            if (Employee[i] != null) {
-                Employee[i] = newEmployee;
-                System.out.println("Работник добавлен под индексом" + i);
-                return;
-            } else {
-                i++;
-            }
-            if (i == 10) {
-                throw new RuntimeException("В массиве нет свободных мест");
-            }
 
+            Employee[i] = newEmployee;
+            System.out.println("Работник добавлен под индексом" + i);
+            return;
         }
+
+        /*if (i == 10) {
+            throw new RuntimeException("В массиве нет свободных мест");
+        }
+*/
     }
+}
 
     /*1. Получить список всех сотрудников со всеми имеющимися
          по ним данными (вывести в консоль значения всех полей (toString)).
@@ -77,4 +77,4 @@ public class EmployeeBook {
            или один, но продумать его.
     6. Получить Ф. И. О. всех сотрудников по отделам
           (напечатать список отделов и их сотрудников).*/
-}
+
