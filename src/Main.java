@@ -35,8 +35,7 @@ public class Main {
                     i1 = scanner.nextInt();
                     switch (i1) {
                         case 1:
-                            employeeBook.createNewEmployee();
-                            employeeBook.addNewEmployee();
+                            employeeBook.addNewEmployee(employeeBook.createNewEmployee());
                             break;
                         case 2:
                             break;
