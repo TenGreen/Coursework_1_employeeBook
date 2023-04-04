@@ -1,13 +1,6 @@
 public class EmployeeBook {
     public Employee Employee[] = new Employee[10];
 
-    public void createNewEmployee(String newLastName,
-                                  String newFirstName, String newPatronymic,
-                                  int newDepartament, double newSalary) {
-        Employee employee = new Employee(newLastName, newFirstName,
-                newPatronymic, newDepartament, newSalary);
-    }
-
     public void printingDataOfOneEmployee(int i) {
         if (Employee[i] != null) {
             System.out.println((Employee[i].getLastName() + Employee[i].getFirstName()
@@ -15,6 +8,13 @@ public class EmployeeBook {
             + Employee[i].getSalary() + Employee[i].getId()));
         }
 
+    }
+
+    public void createNewEmployee(String newLastName,
+                                  String newFirstName, String newPatronymic,
+                                  int newDepartament, double newSalary) {
+        Employee employee = new Employee(newLastName, newFirstName,
+                newPatronymic, newDepartament, newSalary);
     }
 
     public void printingDataAllEmployee() {

@@ -6,18 +6,19 @@ public class Employee {
     private String patronymic;
     private int department;
     private double salary;
-    private static int id = 0;
+    private int id = 0;
+    private static int counter = 0;
 
     public Employee(String lastName, String firstName,
                     String patronymic,
                     int department, double salary) {
-        id++;
+        counter++;
         this.lastName = lastName;
         this.firstName = firstName;
         this.patronymic = patronymic;
         this.department = department;
         this.salary = salary;
-        this.id = id;
+        this.id = counter;
     }
 
     public String getLastName() {
