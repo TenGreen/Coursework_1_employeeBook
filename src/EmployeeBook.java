@@ -9,9 +9,18 @@ public class EmployeeBook {
     }
 
     public void printingDataOfOneEmployee(int i) {
-        System.out.println((Employee[i].getLastName() + Employee[i].getFirstName()
-        + Employee[i].getPatronymic() + Employee[i].getDepartment()
-        + Employee[i].getSalary() + Employee[i].getId()));
+        if (Employee[i] != null) {
+            System.out.println((Employee[i].getLastName() + Employee[i].getFirstName()
+            + Employee[i].getPatronymic() + Employee[i].getDepartment()
+            + Employee[i].getSalary() + Employee[i].getId()));
+        }
+
+    }
+
+    public void printingDataAllEmployee() {
+        for (int i = 0; i < Employee.length; i++) {
+            printingDataOfOneEmployee(i);
+        }
     }
     public void addNewEmployee(Employee newEmployee) {
         int i = 0;
