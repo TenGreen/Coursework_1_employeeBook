@@ -8,8 +8,10 @@ public class EmployeeBook {
                 newPatronymic, newDepartament, newSalary);
     }
 
-    public void printStartMenu() {
-        System.out.println("Программа работы с базой данных сотрудников");
+    public void printingDataOfOneEmployee(int i) {
+        System.out.println((Employee[i].getLastName() + Employee[i].getFirstName()
+        + Employee[i].getPatronymic() + Employee[i].getDepartment()
+        + Employee[i].getSalary() + Employee[i].getId()));
     }
     public void addNewEmployee(Employee newEmployee) {
         int i = 0;
