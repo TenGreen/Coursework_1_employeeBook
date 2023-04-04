@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class EmployeeBook {
     public Employee Employee[] = new Employee[10];
 
@@ -10,11 +12,21 @@ public class EmployeeBook {
 
     }
 
-    public void createNewEmployee(String newLastName,
-                                  String newFirstName, String newPatronymic,
-                                  int newDepartament, double newSalary) {
-        Employee employee = new Employee(newLastName, newFirstName,
+    public  Employee createNewEmployee() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите фамилию");
+        String newLastName = scanner.nextLine();
+        System.out.println("Введите имя");
+        String newFirstName = scanner.nextLine();
+        System.out.println("Введите отчество");
+        String newPatronymic = scanner.nextLine();
+        System.out.println("Введите номер отдела");
+        int newDepartament = scanner.nextInt();
+        System.out.println("Введите размер зарплаты");
+        double newSalary = scanner.nextInt();
+        Employee newEmployee = new Employee(newLastName, newFirstName,
                 newPatronymic, newDepartament, newSalary);
+        return newEmployee;
     }
 
     public void printingDataAllEmployee() {
