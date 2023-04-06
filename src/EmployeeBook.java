@@ -1,51 +1,43 @@
-import java.util.Scanner;
-
 public class EmployeeBook {
-    public Employee Empl[] = new Employee[10];
+    public Employee Employee[] = new Employee[10];
 
+    public void printingDataOfOneEmployee(int i) {
+        if (Employee[i] != null) {
+            System.out.println((Employee[i].getLastName() + Employee[i].getFirstName()
+            + Employee[i].getPatronymic() + Employee[i].getDepartment()
+            + Employee[i].getSalary() + Employee[i].getId()));
+        }
 
-    public Employee createNewEmployee() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите фамилию");
-        String newLastName = scanner.nextLine();
-        System.out.println("Введите имя");
-        String newFirstName = scanner.nextLine();
-        System.out.println("Введите отчество");
-        String newPatronymic = scanner.nextLine();
-        System.out.println("Введите номер отдела");
-        int newDepartament = scanner.nextInt();
-        System.out.println("Введите размер зарплаты");
-        double newSalary = scanner.nextInt();
-        Employee newEmployee = new Employee(newLastName, newFirstName,
+    }
+
+    public void createNewEmployee(String newLastName,
+                                  String newFirstName, String newPatronymic,
+                                  int newDepartament, double newSalary) {
+        Employee employee = new Employee(newLastName, newFirstName,
                 newPatronymic, newDepartament, newSalary);
-        return newEmployee;
     }
 
     public void printingDataAllEmployee() {
-        for (int i = 0; i < Empl.length; i++) {
-            if (Empl[i] != null) {
-                System.out.println(Empl[i]);;
-            } else {
-                System.out.println(i + " Тут пока никого нет");
-            }
+        for (int i = 0; i < Employee.length; i++) {
+            printingDataOfOneEmployee(i);
         }
     }
-
-
     public void addNewEmployee(Employee newEmployee) {
         int i = 0;
-        while (i <= 9) {
-            if (Empl[i] == null) {
-                System.out.println("Всё получится");
-                Empl[i] = newEmployee;
+        while (true) {
+            if (Employee[i] != null) {
+                Employee[i] = newEmployee;
                 System.out.println("Работник добавлен под индексом" + i);
                 return;
-            } else i++;
-            if (i == 9) throw new RuntimeException("В массиве нет свободных мест");
+            } else {
+                i++;
+            }
+            if (i == 10) {
+                throw new RuntimeException("В массиве нет свободных мест");
+            }
+
         }
     }
-}
-
 
     /*1. Получить список всех сотрудников со всеми имеющимися
          по ним данными (вывести в консоль значения всех полей (toString)).
@@ -73,4 +65,4 @@ public class EmployeeBook {
            или один, но продумать его.
     6. Получить Ф. И. О. всех сотрудников по отделам
           (напечатать список отделов и их сотрудников).*/
-
+}
