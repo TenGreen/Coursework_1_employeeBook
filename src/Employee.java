@@ -21,6 +21,26 @@ public class Employee {
         this.id = counter;
     }
 
+    @Override
+    public String toString() {
+        return "Фамилия " + lastName  +
+                ", имя " + firstName  +
+                ", отчество " + patronymic +
+                ", отдел " + department +
+                ", зарплата " + salary +
+                ", id=" + id;
+    }
+
+/*public void toString (Employee employee) {
+        if (employee != null) {
+            System.out.println("фамилия " + employee.getLastName() + " имя " + employee.getFirstName() +
+                    " отчество " + employee.getPatronymic() + " отдел " + employee.getDepartment()
+                    + " зарплата " + employee.getSalary() + " табельный номер " + employee.getId());
+        }
+    }
+
+     */
+
     public String getLastName() {
         return lastName;
     }

@@ -1,16 +1,8 @@
 import java.util.Scanner;
 
 public class EmployeeBook {
-    public Employee Employee[] = new Employee[10];
+    public Employee Empl[] = new Employee[10];
 
-    public void printingDataOfOneEmployee(int i) {
-        if (Employee[i] != null) {
-            System.out.println((Employee[i].getLastName() + Employee[i].getFirstName()
-                    + Employee[i].getPatronymic() + Employee[i].getDepartment()
-                    + Employee[i].getSalary() + Employee[i].getId()));
-        }
-
-    }
 
     public Employee createNewEmployee() {
         Scanner scanner = new Scanner(System.in);
@@ -30,26 +22,30 @@ public class EmployeeBook {
     }
 
     public void printingDataAllEmployee() {
-        for (int i = 0; i < Employee.length; i++) {
-            printingDataOfOneEmployee(i);
+        for (int i = 0; i < Empl.length; i++) {
+            if (Empl[i] != null) {
+                System.out.println(Empl[i]);;
+            } else {
+                System.out.println(i + " Тут пока никого нет");
+            }
         }
     }
+
 
     public void addNewEmployee(Employee newEmployee) {
         int i = 0;
-        while (true) {
-
-            Employee[i] = newEmployee;
-            System.out.println("Работник добавлен под индексом" + i);
-            return;
+        while (i <= 9) {
+            if (Empl[i] == null) {
+                System.out.println("Всё получится");
+                Empl[i] = newEmployee;
+                System.out.println("Работник добавлен под индексом" + i);
+                return;
+            } else i++;
+            if (i == 9) throw new RuntimeException("В массиве нет свободных мест");
         }
-
-        /*if (i == 10) {
-            throw new RuntimeException("В массиве нет свободных мест");
-        }
-*/
     }
 }
+
 
     /*1. Получить список всех сотрудников со всеми имеющимися
          по ним данными (вывести в консоль значения всех полей (toString)).

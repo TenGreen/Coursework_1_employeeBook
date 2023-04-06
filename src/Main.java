@@ -13,9 +13,11 @@ public class Main {
             i = scanner.nextInt();
             switch (i) {
                 case 1:
+                    //employeeBook.printingDataAllEmployee();
                     employeeBook.printingDataAllEmployee();
                     break;
                 case 2:
+
 
                     break;
                 case 3:
