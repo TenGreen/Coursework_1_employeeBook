@@ -43,7 +43,7 @@ public class Main {
                             employeeBook.addNewEmployee(employeeBook.createNewEmployee());
                             break;
                         case 2:
-
+                            employeeBook.delEmployee();
                             break;
                         case 3:
                             break;
@@ -57,7 +57,8 @@ public class Main {
 
                     break;
                 case 8:
-                    employeeBook.createNewRandomEmployee();
+                    employeeBook.fillAllListDefoult();
+                    //employeeBook.fillListRandomPeople();
                     break;
                 case 9:
                     System.exit(0);
@@ -90,7 +91,7 @@ public class Main {
         System.out.println("5. Подсчитать среднее значение зарплат");
         System.out.println("6. Получить Ф. И. О. всех сотрудников");
         System.out.println("7. Редактировать данные");
-        System.out.println("8. Заполнить список сотрудников рандомно");
+        System.out.println("8. Заполнить список сотрудников по умолчанию");
         System.out.println("9. Выйти из программы");
     }
 

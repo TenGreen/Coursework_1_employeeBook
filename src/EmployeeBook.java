@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class EmployeeBook {
     Scanner scanner = new Scanner(System.in);
     public Employee employee[] = new Employee[10];
+    private int forName = 1;
 
     public void printingDataOfOneEmployee(int i) {
         if (employee[i] != null) {
@@ -68,7 +69,7 @@ public class EmployeeBook {
         int employeeMinSalary = 0;
         for (int i = 0; i < employee.length; i++) {
             if (employee[i] != null) {
-                if (minSalary < employee[i].getSalary()) {
+                if (employee[i].getSalary() < minSalary) {
                     minSalary = employee[i].getSalary();
                     employeeMinSalary = i;
                 }
@@ -81,7 +82,7 @@ public class EmployeeBook {
         int employeeMaxSalary = 0;
         for (int i = 0; i < employee.length; i++) {
             if (employee[i] != null) {
-                if (maxSalary < employee[i].getSalary()) {
+                if (employee[i].getSalary() > maxSalary) {
                     maxSalary = employee[i].getSalary();
                     employeeMaxSalary = i;
                 }
@@ -105,16 +106,16 @@ public class EmployeeBook {
     }
     public Employee createNewRandomEmployee() {
         Random rand = new Random(0);
-        Employee randomEmploee = new Employee(jenerateWord(), jenerateWord(),
-                jenerateWord(), rand.nextInt(1-5) ,
-                ((double) rand.nextInt(150000)));
+        Employee randomEmploee = new Employee(""+jenerateWord(), ""+jenerateWord(),
+                ""+jenerateWord(), rand.nextInt(6) ,
+                ((double) rand.nextInt(100000)));
         return randomEmploee;
     }
 
     public void fillListRandomPeople() {
 
         for (Employee employee : employee) {
-            Employee employee1 = createNewRandomEmployee();
+            employee = createNewRandomEmployee();
             System.out.println("список заполнен");
         }
     }
@@ -122,8 +123,32 @@ public class EmployeeBook {
     public void printAllFIO() {
         for (Employee employee : employee) {
             if (employee != null) {
-                System.out.println((employee.getLastName() + employee.getFirstName() + employee.getPatronymic()));
+                System.out.println((employee.getLastName() + " "
+                        + employee.getFirstName() + " " + employee.getPatronymic()));
             } else continue;
+        }
+    }
+
+    public void fillAllListDefoult() {
+        employee[0] = new Employee("Иванов", "Пётр", "Васильевич", 1, 50000);
+        employee[1] = new Employee("Петров", "Василий", "Иванович", 1, 50000);
+        employee[2] = new Employee("Васильев", "Иван", "Петрович", 1, 55000);
+        employee[3] = new Employee("Иванов", "Василий", "Петрович", 1, 60000);
+        employee[4] = new Employee("Васильев", "Пётр", "Иванович", 2, 65000);
+        employee[5] = new Employee("Петров", "Иван", "Васильевич", 2, 65000);
+        employee[6] = new Employee("Иванов", "Пётр", "Осипович", 2, 70000);
+        employee[7] = new Employee("Петров", "Осип", "Иванович", 3, 70000);
+        employee[8] = new Employee("Осипов", "Иван", "Петрович", 3, 55000);
+        employee[9] = new Employee("Иванов", "Пётр", "Осипович", 3, 60000);
+    }
+
+    public void delEmployee() {
+        System.out.println("введите ID сотрудника, которго нужно удалить");
+        int delID = scanner.nextInt();
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i].getId() == delID){
+                employee[i] = null;
+            }
         }
     }
 
