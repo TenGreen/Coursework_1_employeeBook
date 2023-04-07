@@ -1,33 +1,47 @@
+import java.util.Scanner;
+
 public class EmployeeBook {
+    Scanner scanner = new Scanner(System.in);
     public Employee Employee[] = new Employee[10];
 
     public void printingDataOfOneEmployee(int i) {
         if (Employee[i] != null) {
-            System.out.println((Employee[i].getLastName() + Employee[i].getFirstName()
-            + Employee[i].getPatronymic() + Employee[i].getDepartment()
-            + Employee[i].getSalary() + Employee[i].getId()));
+            System.out.println("фамилия " + Employee[i].getLastName() + " имя " + Employee[i].getFirstName()
+                    + " отчество " + Employee[i].getPatronymic() + " отдел " + Employee[i].getDepartment()
+                    + " зарплата " + Employee[i].getSalary() + " ID " + Employee[i].getId());
         }
 
     }
 
-    public void createNewEmployee(String newLastName,
-                                  String newFirstName, String newPatronymic,
-                                  int newDepartament, double newSalary) {
+    public Employee createNewEmployee() {
+        System.out.println("фамилия ");
+        String newLastName = scanner.nextLine();
+        System.out.println("имя ");
+        String newFirstName = scanner.nextLine();
+        System.out.println("отчество ");
+        String newPatronymic = scanner.nextLine();
+        System.out.println("отдел ");
+        int newDepartament = scanner.nextInt();
+        System.out.println("зарплата ");
+        double newSalary = scanner.nextDouble();
         Employee employee = new Employee(newLastName, newFirstName,
                 newPatronymic, newDepartament, newSalary);
+        return employee;
     }
 
     public void printingDataAllEmployee() {
         for (int i = 0; i < Employee.length; i++) {
+
             printingDataOfOneEmployee(i);
         }
     }
+
     public void addNewEmployee(Employee newEmployee) {
         int i = 0;
         while (true) {
-            if (Employee[i] != null) {
+            if (Employee[i] == null) {
                 Employee[i] = newEmployee;
-                System.out.println("Работник добавлен под индексом" + i);
+                System.out.println("Работник добавлен под индексом " + i);
                 return;
             } else {
                 i++;
@@ -37,6 +51,46 @@ public class EmployeeBook {
             }
 
         }
+    }
+
+    public double getAllSalaryMont() {
+        double sum = 0;
+        for (int i = 0; i < Employee.length; i++) {
+            if (Employee[i] == null) {
+                continue;
+            }
+            sum = sum + Employee[i].getSalary();
+        }
+        return sum;
+    }
+
+    public Employee getEnployeeMinSalary() {
+        double minSalary = -1;
+        int employeeMinSalary = -1;
+        for (int i = 0; i <= Employee.length; i++) {
+            if (minSalary < Employee[i].getSalary()) {
+                minSalary = Employee[i].getSalary();
+                employeeMinSalary = i;
+            }
+        }
+        return Employee[employeeMinSalary];
+    }
+    public Employee getEnployeeMaxSalary() {
+        double maxSalary = -1;
+        int employeeMaxSalary = -1;
+        for (int i = 0; i <= Employee.length; i++) {
+            if (Employee[i] != null) {
+                if (maxSalary < Employee[i].getSalary()) {
+                    maxSalary = Employee[i].getSalary();
+                    employeeMaxSalary = i;
+                }
+            } else continue;
+        }
+        return Employee[employeeMaxSalary];
+    }
+
+    public double getAverageValueSalary() {
+       return getAllSalaryMont()/ Employee.length;
     }
 
     /*1. Получить список всех сотрудников со всеми имеющимися

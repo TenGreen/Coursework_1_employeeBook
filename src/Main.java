@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         EmployeeBook employeeBook = new EmployeeBook();
-        int i = 0;
+        int i ;
         int j = 0;
         printStartMenu();
 
@@ -17,15 +17,19 @@ public class Main {
                     employeeBook.printingDataAllEmployee();
                     break;
                 case 2:
-
-
+                    System.out.println("Сумма зарплат по всем отделам за месяц "
+                            + employeeBook.getAllSalaryMont());
                     break;
                 case 3:
-
+                    System.out.println("Сотрудник с минимальной зарплатой "
+                            + employeeBook.getEnployeeMinSalary());
                     break;
                 case 4:
+                    System.out.println("Сотрудник с максимальной зарплатой "
+                            + employeeBook.getEnployeeMaxSalary());
                     break;
                 case 5:
+                    System.out.println("Среднее значение зарплат " + employeeBook.getAverageValueSalary());
 
                     break;
                 case 6:
@@ -40,6 +44,7 @@ public class Main {
                             employeeBook.addNewEmployee(employeeBook.createNewEmployee());
                             break;
                         case 2:
+
                             break;
                         case 3:
                             break;
