@@ -56,6 +56,8 @@ public class Main {
 
                     break;
                 case 8:
+
+                case 9:
                     System.exit(0);
                 default:
                     throw new IllegalStateException("Unexpected value: " + i);
@@ -86,7 +88,8 @@ public class Main {
         System.out.println("5. Подсчитать среднее значение зарплат");
         System.out.println("6. Получить Ф. И. О. всех сотрудников");
         System.out.println("7. Редактировать данные");
-        System.out.println("8. Выйти из программы");
+        System.out.println("8. Заполнить список сотрудников рандомно");
+        System.out.println("9. Выйти из программы");
     }
 
     public static void printEditingMenu() {

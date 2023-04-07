@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class EmployeeBook {
@@ -91,6 +92,34 @@ public class EmployeeBook {
 
     public double getAverageValueSalary() {
        return getAllSalaryMont()/ Employee.length;
+    }
+
+    public String jenerateWord() {
+        Random random = new Random();
+        String word = null;
+        for (int i = 0; i < 5; i++) {
+            word = word + (char)random.nextInt('а'-'я');
+        }
+        return word;
+    }
+    public Employee createNewRandomEmployee() {
+        Random random = new Random();
+        String newLastName = jenerateWord();
+        String newFirstName = jenerateWord();
+        String newPatronymic = jenerateWord();
+        int newDepartament = random.nextInt(1-5);
+        double newSalary = random.nextInt(50_000 - 150000);
+        Employee employee = new Employee(newLastName, newFirstName,
+                newPatronymic, newDepartament, newSalary);
+        return employee;
+    }
+
+    public void fillListRandomPeople() {
+
+        for (Employee employee : Employee) {
+            Employee = createNewRandomEmployee();
+
+        }
     }
 
     /*1. Получить список всех сотрудников со всеми имеющимися
