@@ -3,15 +3,14 @@ import java.util.Scanner;
 
 public class EmployeeBook {
     Scanner scanner = new Scanner(System.in);
-    public Employee Employee[] = new Employee[10];
+    public Employee employee[] = new Employee[10];
 
     public void printingDataOfOneEmployee(int i) {
-        if (Employee[i] != null) {
-            System.out.println("фамилия " + Employee[i].getLastName() + " имя " + Employee[i].getFirstName()
-                    + " отчество " + Employee[i].getPatronymic() + " отдел " + Employee[i].getDepartment()
-                    + " зарплата " + Employee[i].getSalary() + " ID " + Employee[i].getId());
+        if (employee[i] != null) {
+            System.out.println("фамилия " + employee[i].getLastName() + " имя " + employee[i].getFirstName()
+                    + " отчество " + employee[i].getPatronymic() + " отдел " + employee[i].getDepartment()
+                    + " зарплата " + employee[i].getSalary() + " ID " + employee[i].getId());
         }
-
     }
 
     public Employee createNewEmployee() {
@@ -31,7 +30,7 @@ public class EmployeeBook {
     }
 
     public void printingDataAllEmployee() {
-        for (int i = 0; i < Employee.length; i++) {
+        for (int i = 0; i < employee.length; i++) {
 
             printingDataOfOneEmployee(i);
         }
@@ -40,8 +39,8 @@ public class EmployeeBook {
     public void addNewEmployee(Employee newEmployee) {
         int i = 0;
         while (true) {
-            if (Employee[i] == null) {
-                Employee[i] = newEmployee;
+            if (employee[i] == null) {
+                employee[i] = newEmployee;
                 System.out.println("Работник добавлен под индексом " + i);
                 return;
             } else {
@@ -50,75 +49,81 @@ public class EmployeeBook {
             if (i == 10) {
                 throw new RuntimeException("В массиве нет свободных мест");
             }
-
         }
     }
 
     public double getAllSalaryMont() {
         double sum = 0;
-        for (int i = 0; i < Employee.length; i++) {
-            if (Employee[i] == null) {
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i] == null) {
                 continue;
             }
-            sum = sum + Employee[i].getSalary();
+            sum = sum + employee[i].getSalary();
         }
         return sum;
     }
 
     public Employee getEnployeeMinSalary() {
         double minSalary = -1;
-        int employeeMinSalary = -1;
-        for (int i = 0; i <= Employee.length; i++) {
-            if (minSalary < Employee[i].getSalary()) {
-                minSalary = Employee[i].getSalary();
-                employeeMinSalary = i;
+        int employeeMinSalary = 0;
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i] != null) {
+                if (minSalary < employee[i].getSalary()) {
+                    minSalary = employee[i].getSalary();
+                    employeeMinSalary = i;
+                }
             }
         }
-        return Employee[employeeMinSalary];
+        return employee[employeeMinSalary];
     }
     public Employee getEnployeeMaxSalary() {
         double maxSalary = -1;
-        int employeeMaxSalary = -1;
-        for (int i = 0; i <= Employee.length; i++) {
-            if (Employee[i] != null) {
-                if (maxSalary < Employee[i].getSalary()) {
-                    maxSalary = Employee[i].getSalary();
+        int employeeMaxSalary = 0;
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i] != null) {
+                if (maxSalary < employee[i].getSalary()) {
+                    maxSalary = employee[i].getSalary();
                     employeeMaxSalary = i;
                 }
-            } else continue;
+            }
         }
-        return Employee[employeeMaxSalary];
+        return employee[employeeMaxSalary];
     }
 
     public double getAverageValueSalary() {
-       return getAllSalaryMont()/ Employee.length;
+        return getAllSalaryMont()/ employee.length;
     }
 
     public String jenerateWord() {
-        Random random = new Random();
+        Random random = new Random(0);
         String word = null;
         for (int i = 0; i < 5; i++) {
-            word = word + (char)random.nextInt('а'-'я');
+            System.out.println((char)random.nextInt());
+            word = word + (char)random.nextInt();
         }
         return word;
     }
     public Employee createNewRandomEmployee() {
-        Random random = new Random();
-        String newLastName = jenerateWord();
-        String newFirstName = jenerateWord();
-        String newPatronymic = jenerateWord();
-        int newDepartament = random.nextInt(1-5);
-        double newSalary = random.nextInt(50_000 - 150000);
-        Employee employee = new Employee(newLastName, newFirstName,
-                newPatronymic, newDepartament, newSalary);
-        return employee;
+        Random rand = new Random(0);
+        Employee randomEmploee = new Employee(jenerateWord(), jenerateWord(),
+                jenerateWord(), rand.nextInt(1-5) ,
+                ((double) rand.nextInt(150000)));
+        return randomEmploee;
     }
 
     public void fillListRandomPeople() {
 
-        for (Employee employee : Employee) {
-            Employee = createNewRandomEmployee();
+        for (Employee employee : employee) {
+            Employee employee1 = createNewRandomEmployee();
+            System.out.println("список заполнен");
+        }
+    }
 
+    public void printAllFIO() {
+        for (Employee employee : employee) {
+            if (employee != null) {
+                System.out.println((employee.getLastName() + employee.getFirstName() + employee.getPatronymic()));
+            } else continue;
         }
     }
 
@@ -128,7 +133,7 @@ public class EmployeeBook {
       3. Найти сотрудника с минимальной зарплатой.
       4. Найти сотрудника с максимальной зарплатой.
       5. Подсчитать среднее значение зарплат (можно использовать
-         для этого метод из пункта b).
+         для этого метод из пункта b).
       6. Получить Ф. И. О. всех сотрудников (вывести в консоль).*/
 
     /*4. Добавить несколько новых методов:
@@ -139,7 +144,7 @@ public class EmployeeBook {
            всегда с начала, так как возможно добавление
            в ячейку удаленных ранее сотрудников.
         2. Удалить сотрудника (находим сотрудника
-           по Ф. И. О. и/или id, обнуляем его ячейку в массиве).
+           по Ф. И. О. и/или id, обнуляем его ячейку в массиве).
     5. Изменить сотрудника (получить сотрудника
            по Ф. И. О., модернизировать его запись):
         1. Изменить зарплату.

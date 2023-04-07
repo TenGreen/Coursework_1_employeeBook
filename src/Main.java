@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         EmployeeBook employeeBook = new EmployeeBook();
-        int i ;
+        int i;
         int j = 0;
         printStartMenu();
 
@@ -13,7 +13,6 @@ public class Main {
             i = scanner.nextInt();
             switch (i) {
                 case 1:
-                    //employeeBook.printingDataAllEmployee();
                     employeeBook.printingDataAllEmployee();
                     break;
                 case 2:
@@ -33,7 +32,7 @@ public class Main {
 
                     break;
                 case 6:
-
+                    employeeBook.printAllFIO();
                     break;
                 case 7:
                     int i1 = 0;
@@ -50,13 +49,16 @@ public class Main {
                             break;
                         case 4:
                             break;
+                        case 5:
+                            continue;
                         default:
                             throw new IllegalStateException("Unexpected value: " + i1);
                     }
 
                     break;
                 case 8:
-
+                    employeeBook.createNewRandomEmployee();
+                    break;
                 case 9:
                     System.exit(0);
                 default:
@@ -69,7 +71,7 @@ public class Main {
         3. Найти сотрудника с минимальной зарплатой.
         4. Найти сотрудника с максимальной зарплатой.
         5. Подсчитать среднее значение зарплат (можно использовать
-        * для этого метод из пункта b).
+        * для этого метод из пункта b).
         6. Получить Ф. И. О. всех сотрудников (вывести в консоль).
         * */
     }
@@ -99,5 +101,6 @@ public class Main {
         System.out.println("2. Удалить сотрудника");
         System.out.println("3. Изменить сотрудника");
         System.out.println("4. Получить Ф. И. О. всех сотрудников по отделам");
+        System.out.println("5. Выйти в основное меню");
     }
 }
