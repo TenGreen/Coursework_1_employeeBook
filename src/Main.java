@@ -80,7 +80,6 @@ public class Main {
     public static void printStartMenu() {
         System.out.println("Программа работы с базой данных сотрудников");
     }
-
     public static void printBasicMenu() {
         System.out.println("Что вы хотите сделать?");
         System.out.println("1. Получить список всех сотрудников " +
@@ -94,7 +93,6 @@ public class Main {
         System.out.println("8. Заполнить список сотрудников по умолчанию");
         System.out.println("9. Выйти из программы");
     }
-
     public static void printEditingMenu() {
         System.out.println("Меню редактирования.");
         System.out.println("Что вы хотите сделать?");
